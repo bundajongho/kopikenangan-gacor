@@ -1,10 +1,8 @@
-
 @media (max-width: 768px) {
     .benefit1, .benefit2, .benefit3, .benefit4 {
         flex-direction: column;
         text-align: center;
     }
-
     .benefit1 img, .benefit2 img, .benefit3 img, .benefit4 img {
         width: 100%;
         margin-bottom: 20px;
@@ -15,22 +13,18 @@ html {
     font-family: 'Manrope', 'Courier New', Courier, monospace;
     cursor: default;
 }
-
 body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     background-color: #7A4B39;
 }
-
 .maincontent {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     background-color: #fff;
 }
-
-
 .navbar {
     height: 13%;
     width: 100%;
@@ -38,38 +32,37 @@ body {
     position: fixed;
     align-items: center;
     justify-content: space-between;
-    background-color: #7A4B39;
+    background-color: rgba(0, 0, 0, 0);
     transition: 0.4s;
     z-index: 100;
 }
-
 .navbar-a {
     display: flex;
     align-items: center;
 }
-
 .nav-logo {
-    width: 130px;
+    margin-left: 30%;
+    width: 120px;
     height: auto;
+    opacity: 0;
 }
-
+.nav-logo.show {
+    opacity: 1;
+}
 nav {
     flex: 1;
     margin-right: 40px;
 }
-
 nav ul {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-end;
 }
-
 nav ul li {
     list-style: none;
     margin-left: 20px;
 }
-
 nav ul li a {
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -77,13 +70,68 @@ nav ul li a {
     font-weight: bold;
     transition: color 0.4s ease;
 }
-
 nav ul li a:hover {
     color: #e18640;
 }
 nav ul li a:active {
     opacity: 25%;
     transform: translateY(4px);
+}
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+.hamburger .line {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    margin: 5px;
+    transition: 0.4s;
+}
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 70px; 
+        left: 0;
+        background-color: #7A4B39; 
+        transition: opacity 0.4s ease-in-out, visibility 0s 0.4s; 
+        opacity: 0; 
+        visibility: hidden; 
+        z-index: 99;
+        pointer-events: none; 
+    }
+    nav ul li {
+        text-align: center;
+        margin: 3% auto;
+    }
+    .navbar.menu-open nav ul {
+        opacity: 1; 
+        visibility: visible; 
+        pointer-events: auto; 
+        transition: opacity 0.4s ease-in-out, visibility 0s; 
+    }
+    .hamburger {
+        display: flex;
+        margin-left: auto;
+        justify-content: right;
+    }
+    .hamburger .line {
+        text-align: right;
+        margin: 3px 0 5px auto;
+    }
+    .navbar {
+        justify-content: space-between;
+    }
+    .nav-logo {
+        margin-left: 10px;
+    }
+    .nav-links.active {
+        display: flex;
+    }
 }
 .container1 {
     width: 100%;
@@ -150,26 +198,40 @@ h3 {
 }
 
 h2 {
-    color: #f4f4f4;
+    color: #32170e;
 }
-
+.wave {
+    position: relative;
+    width: 100%;
+    height: auto;
+}  
+.wave img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1;
+  }  
+@media (max-width: 768px) {
+    .wave img {
+      width: 100%;
+      height: 25px;
+    }
+}
 .instal {
     display: flex; 
     align-items: center; 
     padding: 20px; 
     padding-bottom: 90px;
-    text-align: left; 
     color: #aaa;
-    margin: 100px;
+    margin-top: 100px;
     position: relative; 
-    border-bottom: 2px solid #aaa;
+    border-bottom: 1px solid #7A4B39;
     width: 80%; 
     margin-left: auto; 
     margin-right: auto; 
 }
-
-
-
 .instal video:first-of-type {
     width: 150px; 
     height: auto; 
@@ -177,125 +239,168 @@ h2 {
     margin-left: 20%;
     border-radius: 26px;
 }
-
-
-.wave {
-    position: relative;
-    width: 100%;
-    height: auto;
-  }
-  
-  .wave img {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 1;
-  }
-  
-
-  
-  @media (max-width: 768px) {
-    .wave img {
-      width: 100%;
-      height: 25px;
-    }
-  }
-
-
-
-
 .text {
     margin-right: 11%;
+    text-align: center; 
 }
-
 .text h2 {
     font-size: 14pt;
     margin: 0; 
+    text-align: center;
+    color: #ff6f00;
 }
 .text p {
     font-size: 12pt;
-    color: #c89885;
+    color: #32170e;
+    text-align: left;
 }
 .text ul {
     font-size: 12pt;
-    color: #c89885;
+    color: #32170e;
     margin: 10px 0; 
+    text-align: left;
     padding-left: 20px; 
 }
-
 .text a {
     display: inline-block; 
     margin-right: 10px; 
+    
 }
-
 .text a img {
     width: 120px; 
     height: auto; 
     margin-top: 10px; 
+    border-radius: 8px;
+    transition: 0.4s;
 }
 
+.text a img:hover {
+    box-shadow: 0 2px 8px #7A4B39;
+}
+@media (max-width: 768px) {
+    .instal {
+        flex-direction: column; 
+        text-align: center; 
+        padding: 20px;
+    }
+    .instal video:first-of-type {
+        width: 100%; 
+        max-width: 200px; 
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    .text {
+        margin-right: 0; 
+        width: 100%;
+    }
+    .text h2 {
+        font-size: 14pt; 
+    }
+    .text p, .text ul {
+        font-size: 12pt; 
+    }
+    .text a img {
+        width: 150px; 
+    }
+}
 .judul2{
     font-size: 14pt;
     text-align: center;
-    color: white;
+    color: #ff4800;
+    margin: 6% auto 3%;
 }
-
-
-
-
 .benefitpage {
-    margin: 120px;
+    margin: 0 15%;
 }
-
-.benefitpage span {
-    color: #fff;
-    font-weight: bold;
-}
-
-.benefit1, .benefit2, .benefit3, .benefit4 {
+.benefit {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: space-between; 
+    align-content: center;
+    margin: 0 auto 10%;
+}
+.benefit1, .benefit2, .benefit3, .benefit4 {
+    display: block;
     gap: 20px;
+    align-items: center;
     padding: 20px;
-    margin-bottom: 20px;
-    font-size: 12pt;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    flex-basis: calc(50% - 20px); 
+    box-sizing: border-box;
+    flex-wrap: wrap; 
+    margin: 0 auto;
+}
+#benefit-img {
+    display: flex;
+    justify-content: center; /* Mengatur gambar ke tengah secara horizontal */
+    align-items: center; 
+}
+#benefit-text {
+    flex: 1;
+}
+@media (max-width: 768px) {
+    .benefit1, .benefit2, .benefit3, .benefit4 {
+        flex-basis: 100%; 
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    #benefit-img {
+        flex: 0 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+    .benefit img {
+        width: 80px; 
+    }
+    #benefit-text {
+        width: 100%;
+    }
 }
 .benefit1 p, .benefit2 p, .benefit3 p, .benefit4 p {
     font-size: 12pt;
-    color: #c89885;
+    color: #32170e;
+}
+.benefit1 h3, .benefit2 h3, .benefit3 h3, .benefit4 h3 {
+    color: #ff6f00;
+}
+.benefit1 span, .benefit2 span, .benefit3 span, .benefit4 span {
+    color: #ff6f00;
 }
 .benefit1 img, .benefit2 img, .benefit3 img, .benefit4 img {
     width: 250px;
     height: auto;
+    align-self: center;
 }
-
 .benefit1 div, .benefit2 div, .benefit3 div, .benefit4 div {
     flex: 1;
-    color: #cdcdcd;
+    color: #7A4B39;
 }
-
 .benefit1, .benefit3 {
     flex-direction: row;
 }
-
 .benefit2, .benefit4 {
     flex-direction: row-reverse;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+.wave2 {
+    position: relative;
+    width: 100%;
+    height: 37px;
+    margin-bottom: -55px; 
+}  
+  .wave2 img {
+    width: 100%;
+    height: 50px;
+    display: block;
+    transform: scaleX(-1) scaleY(-1);
+  }
+@media (max-width: 768px) {
+    .wave2 img {
+      width: 100%;
+      height: 35px;
+    }
+}
 footer {
     background-color: #7A4B39;
     color: #fff;
@@ -322,6 +427,7 @@ footer {
     font-size: 12pt;
     font-weight: bold;
     color: #ffffff;
+    margin-bottom: 15px;
 }
 .navlink a, .reach-us a, .customer-center a {
     text-decoration: none;
@@ -335,17 +441,21 @@ footer {
 .navlink p:hover, .reach-us p:hover {
     text-shadow: 2px 2px 5px #fff;
 }
-
 .wa{
     text-decoration: none;
     color: white;
 }
 .customer-center p {
-    max-width: 250px;
+    max-width: 350px;
+}
+@media (max-width: 768px) {
+    .customer-center p {
+        max-width: 100%;
+    }
 }
 .footer-divider {
     border: 0;
-    height: 1px;
+    height: 0.5px;
     background-color: #ffffff;
     margin: 20px 0;
 }
